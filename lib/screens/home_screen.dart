@@ -15,25 +15,24 @@ class _HomePageState extends State<HomePage> {
   final String apiUrl =
       "https://raw.githubusercontent.com/codeifitech/fitness-app/master/exercises.json";
 
-  Future<ExerciseHub> exerciseHub;
+  ExerciseHub exerciseHub;
 
   @override
   void initState() {
-    setState(() {
-      exerciseHub = getExercises();
-    });
+    getExercises();
+
     super.initState();
   }
 
-  Future<ExerciseHub> getExercises() async {
+  void getExercises() async {
     var response = await http.get(apiUrl);
     var body = response.body;
 
     var decodedJson = jsonDecode(body);
 
-    print(body);
+    exerciseHub = ExerciseHub.fromJson(decodedJson);
 
-    return decodedJson;
+    setState(() {});
   }
 
   @override
