@@ -46,7 +46,17 @@ class _HomePageState extends State<HomePage> {
             ? ListView.builder(
           itemBuilder: (context, index) {
             return Container(
-              child: Text("Text"),
+              child: FadeInImage(
+                image:
+                NetworkImage(exerciseHub.exercises[index].thumbnail),
+                placeholder: AssetImage("assets/placeholder.jpg"),
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width,
+                height: 250,
+                fit: BoxFit.cover,
+              ),
             );
           },
           itemCount: exerciseHub.exercises.length,
