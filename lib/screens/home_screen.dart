@@ -38,9 +38,20 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("HomePage"),),
-      body: Center(
-        child: Text("HomePage"),
+      appBar: AppBar(
+        title: Text("HomePage"),
+      ),
+      body: Container(
+        child: exerciseHub != null
+            ? ListView.builder(
+          itemBuilder: (context, index) {
+            return Container(
+              child: Text("Text"),
+            );
+          },
+          itemCount: exerciseHub.exercises.length,
+        )
+            : LinearProgressIndicator(),
       ),
     );
   }
