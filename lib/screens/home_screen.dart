@@ -52,54 +52,58 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ExerciseStartScreen()));
+                                builder: (context) =>
+                                    ExerciseStartScreen(exercise)));
                       },
-                      child: Container(
-                        margin: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16)),
-                        child: Stack(
-                          children: <Widget>[
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(16),
-                              child: FadeInImage(
-                                image: NetworkImage(exercise.thumbnail),
-                                placeholder:
-                                    AssetImage("assets/placeholder.jpg"),
-                                width: MediaQuery.of(context).size.width,
-                                height: 250,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(16),
-                              child: Container(
-                                width: MediaQuery.of(context).size.width,
-                                height: 250,
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                      colors: [
-                                        Color(0xff000000),
-                                        Color(0x00000000)
-                                      ],
-                                      begin: Alignment.bottomCenter,
-                                      end: Alignment.center),
+                      child: Hero(
+                        tag: exercise.id,
+                        child: Container(
+                          margin: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16)),
+                          child: Stack(
+                            children: <Widget>[
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(16),
+                                child: FadeInImage(
+                                  image: NetworkImage(exercise.thumbnail),
+                                  placeholder:
+                                      AssetImage("assets/placeholder.jpg"),
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 250,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              alignment: Alignment.bottomLeft,
-                              height: 250,
-                              child: Text(
-                                exercise.title,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(16),
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 250,
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                        colors: [
+                                          Color(0xff000000),
+                                          Color(0x00000000)
+                                        ],
+                                        begin: Alignment.bottomCenter,
+                                        end: Alignment.center),
+                                  ),
                                 ),
                               ),
-                            )
-                          ],
+                              Container(
+                                padding: EdgeInsets.all(10),
+                                alignment: Alignment.bottomLeft,
+                                height: 250,
+                                child: Text(
+                                  exercise.title,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     );
