@@ -50,15 +50,35 @@ class _HomePageState extends State<HomePage> {
                       margin: EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16)),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
-                        child: FadeInImage(
-                          image: NetworkImage(exercise.thumbnail),
-                          placeholder: AssetImage("assets/placeholder.jpg"),
-                          width: MediaQuery.of(context).size.width,
-                          height: 250,
-                          fit: BoxFit.cover,
-                        ),
+                      child: Stack(
+                        children: <Widget>[
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(16),
+                            child: FadeInImage(
+                              image: NetworkImage(exercise.thumbnail),
+                              placeholder: AssetImage("assets/placeholder.jpg"),
+                              width: MediaQuery.of(context).size.width,
+                              height: 250,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(16),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: 250,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                    colors: [
+                                      Color(0xff000000),
+                                      Color(0x00000000)
+                                    ],
+                                    begin: Alignment.bottomCenter,
+                                    end: Alignment.center),
+                              ),
+                            ),
+                          )
+                        ],
                       ),
                     );
                   },
