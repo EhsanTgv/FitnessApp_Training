@@ -77,6 +77,18 @@ class _HomePageState extends State<HomePage> {
                                     end: Alignment.center),
                               ),
                             ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(10),
+                            alignment: Alignment.bottomLeft,
+                            height: 250,
+                            child: Text(
+                              exercise.title,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                              ),
+                            ),
                           )
                         ],
                       ),
