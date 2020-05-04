@@ -43,26 +43,26 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Container(
         child: exerciseHub != null
-            ? ListView.builder(
-                itemBuilder: (context, index) {
-                  return Container(
-                    margin: EdgeInsets.all(10),
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(16)),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(16),
-                      child: FadeInImage(
-                        image: NetworkImage(
-                            exerciseHub.exercises[index].thumbnail),
-                        placeholder: AssetImage("assets/placeholder.jpg"),
-                        width: MediaQuery.of(context).size.width,
-                        height: 250,
-                        fit: BoxFit.cover,
+            ? ListView(
+                children: exerciseHub.exercises.map(
+                  (exercise) {
+                    return Container(
+                      margin: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16)),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: FadeInImage(
+                          image: NetworkImage(exercise.thumbnail),
+                          placeholder: AssetImage("assets/placeholder.jpg"),
+                          width: MediaQuery.of(context).size.width,
+                          height: 250,
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                    ),
-                  );
-                },
-                itemCount: exerciseHub.exercises.length,
+                    );
+                  },
+                ).toList(),
               )
             : LinearProgressIndicator(),
       ),
