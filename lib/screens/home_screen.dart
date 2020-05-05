@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fitnessapp/screens/exercise_hub.dart';
 import 'package:fitnessapp/screens/exercise_start_screen.dart';
 import 'package:flutter/material.dart';
@@ -65,13 +66,19 @@ class _HomePageState extends State<HomePage> {
                             children: <Widget>[
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(16),
-                                child: FadeInImage(
-                                  image: NetworkImage(exercise.thumbnail),
-                                  placeholder:
-                                      AssetImage("assets/placeholder.jpg"),
-                                  width: MediaQuery.of(context).size.width,
-                                  height: 250,
+                                child: CachedNetworkImage(
+                                  imageUrl: exercise.thumbnail,
+                                  placeholder: (context, url) => Image(
+                                    image: AssetImage("assets/placeholder.jpg"),
+                                    fit: BoxFit.cover,
+                                    height: 250,
+                                    width: MediaQuery.of(context).size.width,
+                                  ),
+                                  errorWidget: (context, url, error) =>
+                                      Icon(Icons.error),
                                   fit: BoxFit.cover,
+                                  height: 250,
+                                  width: MediaQuery.of(context).size.width,
                                 ),
                               ),
                               ClipRRect(
