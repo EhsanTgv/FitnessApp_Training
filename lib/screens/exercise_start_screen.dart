@@ -82,6 +82,22 @@ class _ExerciseStartScreenState extends State<ExerciseStartScreen> {
                     ),
                   ),
                 ),
+                Container(
+                  alignment: Alignment.center,
+                  child: RaisedButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Start Exercise",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    color: Color(0xFFE83350),
+                    textColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    splashColor: Colors.black,
+                  ),
+                )
               ],
             )),
       ),
