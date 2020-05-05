@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fitnessapp/screens/exercise_hub.dart';
 import 'package:flutter/material.dart';
+import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 class ExerciseStartScreen extends StatefulWidget {
   final Exercises exercises;
@@ -50,7 +51,17 @@ class _ExerciseStartScreenState extends State<ExerciseStartScreen> {
                       end: Alignment.center,
                     ),
                   ),
-                )
+                ),
+                Positioned(
+                  bottom: 40,
+                  left: 0,
+                  right: 0,
+                  child: Container(
+                    height: 200,
+                    width: 200,
+                    child: SleekCircularSlider(),
+                  ),
+                ),
               ],
             )),
       ),
