@@ -59,7 +59,27 @@ class _ExerciseStartScreenState extends State<ExerciseStartScreen> {
                   child: Container(
                     height: 200,
                     width: 200,
-                    child: SleekCircularSlider(),
+                    child: SleekCircularSlider(
+                      appearance: CircularSliderAppearance(),
+                      onChange: (double value) {
+                        print(value);
+                      },
+                      initialValue: 30,
+                      min: 10,
+                      max: 60,
+                      innerWidget: (v) {
+                        return Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            "${v.toInt()} s",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ],
