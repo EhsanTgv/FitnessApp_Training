@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fitnessapp/screens/exercise_hub.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +22,12 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
   bool _isCompleted = false;
   int _elapsedSeconds = 0;
   Timer timer;
+  AudioPlayer audioPlayer = AudioPlayer();
+  AudioCache audioCache = AudioCache();
+
+  void playAudio() {
+    audioCache.play("cheering.wav");
+  }
 
   @override
   void initState() {
@@ -29,6 +37,8 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
         setState(() {
           _isCompleted = true;
         });
+
+        playAudio();
       }
 
       setState(() {
