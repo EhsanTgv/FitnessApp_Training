@@ -16,6 +16,8 @@ class ExerciseStartScreen extends StatefulWidget {
 }
 
 class _ExerciseStartScreenState extends State<ExerciseStartScreen> {
+  int _seconds;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,7 +65,7 @@ class _ExerciseStartScreenState extends State<ExerciseStartScreen> {
                     child: SleekCircularSlider(
                       appearance: CircularSliderAppearance(),
                       onChange: (double value) {
-                        print(value);
+                        _seconds = value.toInt();
                       },
                       initialValue: 30,
                       min: 10,
@@ -90,8 +92,10 @@ class _ExerciseStartScreenState extends State<ExerciseStartScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              ExerciseScreen(widget.exercises),
+                          builder: (context) => ExerciseScreen(
+                            exercises: widget.exercises,
+                            seconds: _seconds,
+                          ),
                         ),
                       );
                     },
