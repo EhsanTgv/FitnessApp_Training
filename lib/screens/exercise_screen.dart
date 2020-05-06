@@ -17,7 +17,7 @@ class ExerciseScreen extends StatefulWidget {
 }
 
 class _ExerciseScreenState extends State<ExerciseScreen> {
-  bool _isCompleted;
+  bool _isCompleted = false;
   int _elapsedSeconds = 0;
   Timer timer;
 
@@ -47,19 +47,31 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: CachedNetworkImage(
-          imageUrl: widget.exercises.gif,
-          placeholder: (context, url) => Image(
-            image: AssetImage("assets/placeholder.jpg"),
-            fit: BoxFit.cover,
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
+      body: Stack(
+        children: <Widget>[
+          Center(
+            child: CachedNetworkImage(
+              imageUrl: widget.exercises.gif,
+              placeholder: (context, url) => Image(
+                image: AssetImage("assets/placeholder.jpg"),
+                fit: BoxFit.cover,
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+              ),
+              errorWidget: (context, url, error) => Icon(Icons.error),
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+            ),
           ),
-          errorWidget: (context, url, error) => Icon(Icons.error),
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-        ),
+          _isCompleted != true
+              ? SafeArea(
+                  child: Container(
+                    alignment: Alignment.topCenter,
+                    child: Text("$_elapsedSeconds/${widget.seconds}"),
+                  ),
+                )
+              : Container(),
+        ],
       ),
     );
   }
