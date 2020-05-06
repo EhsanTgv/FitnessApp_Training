@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fitnessapp/screens/exercise_hub.dart';
+import 'package:fitnessapp/screens/exercise_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
@@ -85,7 +86,15 @@ class _ExerciseStartScreenState extends State<ExerciseStartScreen> {
                 Container(
                   alignment: Alignment.center,
                   child: RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              ExerciseScreen(widget.exercises),
+                        ),
+                      );
+                    },
                     child: Text(
                       "Start Exercise",
                       style: TextStyle(fontSize: 20),
