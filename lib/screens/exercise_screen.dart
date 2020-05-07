@@ -81,6 +81,14 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
                   ),
                 )
               : Container(),
+          SafeArea(
+            child: IconButton(
+              icon: Icon(Icons.close),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ),
         ],
       ),
     );
